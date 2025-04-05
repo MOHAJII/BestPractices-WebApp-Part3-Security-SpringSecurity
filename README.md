@@ -1,39 +1,59 @@
-# **BestPractices-WebApp-SpringMVC-Thymeleaf**  
-
-![Application Screenshot](pictures/patientManagement.png)  
+# **BestPractices-WebApp-Security-SpringSecurity**  
+![Application Screenshot](pictures/security-login.png)  
 
 ## **Introduction**  
-This repository is part of the **Best Practices Web Application** series, demonstrating how to build a **Spring Boot web application** using **Spring MVC**, **Thymeleaf**, and **Spring Data JPA**. It focuses on **managing patients** with a clean and maintainable architecture.  
+This repository extends the previous **Spring MVC & Thymeleaf** application by adding **Spring Security** for **authentication and authorization**. It ensures that only authorized users can access sensitive data and perform critical actions.  
 
 ## **Features**  
-✔️ **Display Patients** – List all patients in a structured view.  
-✔️ **Pagination** – Efficiently navigate through patient records.  
-✔️ **Search Functionality** – Find patients dynamically.  
-✔️ **Delete Patients** – Remove patient records.  
-✔️ **UI Enhancements** – Improved user experience with Thymeleaf.  
+✔️ **User Authentication** – Secure login/logout mechanism  
+✔️ **Role-Based Access Control (RBAC)** – Different permissions for users & admins  
+✔️ **Secure Password Storage** – Hashing with **BCrypt**  
+✔️ **Authorization Filters** – Restricting access to certain pages  
+✔️ **Session Management** – Protecting against session hijacking  
 
 ## **Technologies Used**  
 🔹 **Java 17+**  
-🔹 **Spring Boot** (Spring MVC, Spring Data JPA)  
-🔹 **Thymeleaf** (for frontend rendering)  
-🔹 **H2 Database** (for easy setup)  
-🔹 **Bootstrap** (for styling and responsiveness)  
+🔹 **Spring Boot** (Spring Security, Spring MVC, Spring Data JPA)  
+🔹 **Thymeleaf** (for authentication views)  
+🔹 **MySQL Database** (for storing data and user credentials)  
+🔹 **BCrypt** (for password hashing)  
 
 ## **Setup & Installation**  
 1️⃣ Clone the repository:  
 ```sh  
-git clone https://github.com/MOHAJII/BestPractices-WebApp-Part2-SpringMVC-Thymeleaf.git 
-cd SpringMVC-Thymeleaf 
+git clone https://github.com/MOHAJII/BestPractices-WebApp-Security-SpringSecurity.git  
+cd BestPractices-WebApp-Security-SpringSecurity  
 ```  
+
 2️⃣ Run the application using Maven:  
 ```sh  
 mvn spring-boot:run  
 ```  
+
 3️⃣ Open your browser and access:  
 ```
-http://localhost:8085
+http://localhost:8085/login
 ```  
+(Default login credentials are stored in the database and can be modified.)  
+
+## **User Roles & Access Control**  
+| Role  | Access Rights |
+|--------|-----------------------------|
+| **USER**  | Can view patient records |
+| **ADMIN**  | Can add, edit, delete patients & manage users |
+
+## **Implementation Details**
+- **Spring Security Filters** – Handles authentication and authorization  
+- **Login & Logout Views** – Built using Thymeleaf  
+- **Custom UserDetailsService** – Loads users from the database  
+- **CSRF Protection** – Enabled by default for secure request handling  
+- **Password Hashing** – Uses **BCrypt** for secure password storage  
+
+## **Upcoming Features**  
+📌 The next part in this series will introduce:  
+✅ **JWT-based authentication** for stateless security  
+✅ **OAuth2 and Social Login integration**  
+✅ **Advanced security best practices**  
 
 ## **Conclusion**  
-This project demonstrates how to integrate **Spring MVC, Thymeleaf, and Spring Data JPA** to build a **modern, full-stack web application**. It follows best practices for web development. 
-# BestPractices-WebApp-Part3-Security-SpringSecurity
+This project enhances the previous **Spring MVC & Thymeleaf** application by implementing **Spring Security**, ensuring robust authentication and authorization. It follows best practices for securing web applications and managing user access efficiently.  
