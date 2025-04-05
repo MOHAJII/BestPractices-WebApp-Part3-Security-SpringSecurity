@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">>
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Patient management</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
-    <script src="webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -24,20 +24,27 @@
                 <a class="nav-link" th:href="@{/user/index}">About</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Patients</a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" th:href="@{/admin/formPatient}" th:if="${#authorization.expression('hasRole(''ADMIN'')')}">New</a></li>
-                    <li><a class="dropdown-item" th:href="@{/index}">Search</a></li>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    Patients
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li>
+                        <a class="dropdown-item" th:href="@{/admin/formPatient}"
+                           th:if="${#authorization.expression('hasRole(''ADMIN'')')}">New</a>
+                    </li>
+                    <li><a class="dropdown-item" th:href="@{/user/index}">Search</a></li>
                 </ul>
             </li>
+
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                 th:text="${#authentication.name}"></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <form method="post" th:action="@{/user/logout}">
+                        <form method="post" th:action="@{/logout}">
                             <button class="dropdown-item" type="submit">Logout</button>
                         </form>
                     </li>
