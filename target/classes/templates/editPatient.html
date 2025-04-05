@@ -16,7 +16,7 @@
                 <i class="bi bi-person-fill"></i>
             </div>
             <div class="card-body">
-                <form method="post" th:action="@{/save(page=${currentPage}, keyword=${keyword})}">
+                <form method="post" th:action="@{/admin/save(page=${currentPage}, keyword=${keyword})}">
                     <input type="hidden" class="form-control" id="id" name="id" th:value="${patient.id}" >
                     <div class="form-group">
                         <label for="name" class="text-xl-start">Name</label>

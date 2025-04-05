@@ -1,4 +1,4 @@
-package net.haji.springmvcthymeleaf.dao.entities;
+package net.haji.springmvcthymeleafsecured.dao.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;

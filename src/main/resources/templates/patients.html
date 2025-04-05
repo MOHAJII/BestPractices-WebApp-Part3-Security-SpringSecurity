@@ -14,7 +14,7 @@
         <div class="card-header">Patients List</div>
         <div class="card-body">
             <div class="col-4">
-                <form method="get" th:action="@{index}">
+                <form method="get" th:action="@{/user/index}">
                     <label for="keyword" class="description-from-type-label"><span class="font-size-large mb-1">Keyword</span>
                     </label>
                     <div class="input-group mb-3">
@@ -45,12 +45,12 @@
                         <td th:text="${patient.isSick()}"></td>
                         <td th:text="${patient.score}"></td>
                         <td>
-                            <a th:href="@{delete(id = ${patient.id}, page = ${currentPage}, keyword = ${keyword})}"
+                            <a th:href="@{/admin/delete(id = ${patient.id}, page = ${currentPage}, keyword = ${keyword})}"
                                class="btn btn-outline-danger bi bi-trash-fill"
                                onclick="return confirm('Are you sure?')"></a>
                         </td>
                         <td>
-                            <a th:href="@{editPatient(id = ${patient.id}, page = ${currentPage}, keyword = ${keyword})}"
+                            <a th:href="@{/admin/editPatient(id = ${patient.id}, page = ${currentPage}, keyword = ${keyword})}"
                                class="btn btn-outline-success bi bi-pencil-fill">
                             </a>
                         </td>
@@ -60,7 +60,7 @@
                 <div class="w-100">
                     <ul class="nav nav-pills justify-content-center">
                         <li th:each="page, status:${pages}" class="page-item">
-                            <a th:href="@{/index(page=${status.index}, size=5, keyword=${keyword})}"
+                            <a th:href="@{/user/index(page=${status.index}, size=5, keyword=${keyword})}"
                                th:text="${status.index}"
                                th:class="${currentPage == status.index} ? 'btn btn-info' : 'btn btn-outline-info'"
                             ></a>

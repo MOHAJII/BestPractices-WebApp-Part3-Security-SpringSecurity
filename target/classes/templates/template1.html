@@ -13,29 +13,34 @@
         <!-- Links -->
         <ul class="navbar-nav">
             <li class="navbar-item">
-            <a class="navbar-brand" th:href="@{/index}">
+            <a class="navbar-brand" th:href="@{/user/index}">
                 Patient Management
             </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/index}">Home</a>
+                <a class="nav-link" th:href="@{/user/index}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/index}">About</a>
+                <a class="nav-link" th:href="@{/user/index}">About</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Patients</a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" th:href="@{/formPatient}">New</a></li>
+                    <li><a class="dropdown-item" th:href="@{/admin/formPatient}">New</a></li>
                     <li><a class="dropdown-item" th:href="@{/index}">Search</a></li>
                 </ul>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">[Username]</a>
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                th:text="${#authentication.name}"></a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" th:href="@{/formPatient}">Logout</a></li>
+                    <li>
+                        <form method="post" th:action="@{/user/logout}">
+                            <button class="dropdown-item" type="submit">Logout</button>
+                        </form>
+                    </li>
                 </ul>
             </li>
         </ul>

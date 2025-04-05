@@ -1,19 +1,22 @@
-package net.haji.springmvcthymeleaf;
+package net.haji.springmvcthymeleafsecured;
 
-import net.haji.springmvcthymeleaf.dao.entities.Patient;
-import net.haji.springmvcthymeleaf.dao.repositories.PatientRepository;
+import net.haji.springmvcthymeleafsecured.dao.entities.Patient;
+import net.haji.springmvcthymeleafsecured.dao.repositories.PatientRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
-public class SpringMvcThymeleafApplication {
+public class SpringMvcThymeleafApplicationSecured {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringMvcThymeleafApplication.class, args);
+        SpringApplication.run(SpringMvcThymeleafApplicationSecured.class, args);
     }
 
     //@Bean
@@ -37,5 +40,10 @@ public class SpringMvcThymeleafApplication {
             List<Patient> patients = patientRepository.findByNameContainsIgnoreCase("y");
             patients.forEach(System.out::println);
         };
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

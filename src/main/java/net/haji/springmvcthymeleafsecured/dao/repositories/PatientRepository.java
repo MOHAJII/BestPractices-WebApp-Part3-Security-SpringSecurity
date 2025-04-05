@@ -1,6 +1,6 @@
-package net.haji.springmvcthymeleaf.dao.repositories;
+package net.haji.springmvcthymeleafsecured.dao.repositories;
 
-import net.haji.springmvcthymeleaf.dao.entities.Patient;
+import net.haji.springmvcthymeleafsecured.dao.entities.Patient;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

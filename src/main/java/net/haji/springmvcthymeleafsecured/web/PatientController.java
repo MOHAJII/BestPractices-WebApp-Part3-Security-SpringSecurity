@@ -1,9 +1,9 @@
-package net.haji.springmvcthymeleaf.web;
+package net.haji.springmvcthymeleafsecured.web;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import net.haji.springmvcthymeleaf.dao.entities.Patient;
-import net.haji.springmvcthymeleaf.dao.repositories.PatientRepository;
+import net.haji.springmvcthymeleafsecured.dao.entities.Patient;
+import net.haji.springmvcthymeleafsecured.dao.repositories.PatientRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,8 @@ public class PatientController {
     public String index(Model model) {
         return "redirect:/index";
     }
-    @GetMapping("/index")
+
+    @GetMapping("/user/index")
     public String index(Model model,
                         @RequestParam(name = "page", defaultValue = "0") int page,
                         @RequestParam(name = "size", defaultValue = "4") int size,
@@ -36,7 +37,7 @@ public class PatientController {
         return "patients";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/admin/delete")
     public String delete(@RequestParam(name = "id") Long id,
                          @RequestParam(name = "page", defaultValue = "0") int page,
                          @RequestParam(name = "size", defaultValue = "4") int size,
@@ -45,13 +46,13 @@ public class PatientController {
        return "redirect:/index?page="+page+"&size="+size+"&keyword="+keyword;
     }
 
-    @GetMapping("/formPatient")
+    @GetMapping("/admin/formPatient")
     public String formPatient(Model model) {
         model.addAttribute("patient", new Patient());
         return "formPatient";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/admin/save")
     public String save(Model model,
                        @Valid Patient patient,
                        BindingResult bindingResult,
@@ -65,7 +66,7 @@ public class PatientController {
         return "redirect:/index?page="+page+"&keyword="+keyword;
     }
 
-    @GetMapping("/editPatient")
+    @GetMapping("/admin/editPatient")
     public String editPatient(Model model,
                               @RequestParam(name = "id") Long id,
                               @RequestParam(name = "page", defaultValue = "0") int page,
