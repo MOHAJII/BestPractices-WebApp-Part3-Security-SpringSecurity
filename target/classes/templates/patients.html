@@ -45,12 +45,14 @@
                         <td th:text="${patient.isSick()}"></td>
                         <td th:text="${patient.score}"></td>
                         <td>
-                            <a th:href="@{/admin/delete(id = ${patient.id}, page = ${currentPage}, keyword = ${keyword})}"
+                            <a  th:if="${#authorization.expression('hasRole(''ADMIN'')')}"
+                                th:href="@{/admin/delete(id = ${patient.id}, page = ${currentPage}, keyword = ${keyword})}"
                                class="btn btn-outline-danger bi bi-trash-fill"
                                onclick="return confirm('Are you sure?')"></a>
                         </td>
                         <td>
-                            <a th:href="@{/admin/editPatient(id = ${patient.id}, page = ${currentPage}, keyword = ${keyword})}"
+                            <a  th:if="${#authorization.expression('hasRole(''ADMIN'')')}"
+                                th:href="@{/admin/editPatient(id = ${patient.id}, page = ${currentPage}, keyword = ${keyword})}"
                                class="btn btn-outline-success bi bi-pencil-fill">
                             </a>
                         </td>

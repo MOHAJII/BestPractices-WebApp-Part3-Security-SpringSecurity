@@ -78,4 +78,9 @@ public class PatientController {
         model.addAttribute("keyword", keyword);
         return "editPatient";
     }
+
+    @GetMapping("/notAuthorized")
+    public String notAuthorized(Model model) {
+        return "notAuthorized";
+    }
 }
