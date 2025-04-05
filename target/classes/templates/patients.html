@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/bootstrap-icons/1.11.3/font/bootstrap-icons.css">
+</head>
+<body>
+<div layout:fragment="content1">
+    <div class="card p-4 col-8 mx-auto">
+        <div class="card-header">Patients List</div>
+        <div class="card-body">
+            <div class="col-4">
+                <form method="get" th:action="@{index}">
+                    <label for="keyword" class="description-from-type-label"><span class="font-size-large mb-1">Keyword</span>
+                    </label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control w-25" id="keyword" name="keyword" placeholder="Enter Keyword"
+                               th:value="${keyword}">
+                        <button type="submit" class="btn btn-info bi bi-search"></button>
+                    </div>
+                </form>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Patient ID</th>
+                        <th>Name</th>
+                        <th>Birthday</th>
+                        <th>Is Sick</th>
+                        <th>Score</th>
+                        <th>Delete</th>
+                        <th>Edit</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="patient : ${patientsList}">
+                        <td th:text="${patient.id}"></td>
+                        <td th:text="${patient.name}"></td>
+                        <td th:text="${patient.birthDate}"></td>
+                        <td th:text="${patient.isSick()}"></td>
+                        <td th:text="${patient.score}"></td>
+                        <td>
+                            <a th:href="@{delete(id = ${patient.id}, page = ${currentPage}, keyword = ${keyword})}"
+                               class="btn btn-outline-danger bi bi-trash-fill"
+                               onclick="return confirm('Are you sure?')"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{editPatient(id = ${patient.id}, page = ${currentPage}, keyword = ${keyword})}"
+                               class="btn btn-outline-success bi bi-pencil-fill">
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="w-100">
+                    <ul class="nav nav-pills justify-content-center">
+                        <li th:each="page, status:${pages}" class="page-item">
+                            <a th:href="@{/index(page=${status.index}, size=5, keyword=${keyword})}"
+                               th:text="${status.index}"
+                               th:class="${currentPage == status.index} ? 'btn btn-info' : 'btn btn-outline-info'"
+                            ></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
