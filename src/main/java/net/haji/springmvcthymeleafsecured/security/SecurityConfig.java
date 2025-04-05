@@ -3,6 +3,7 @@ package net.haji.springmvcthymeleafsecured.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -30,13 +31,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .formLogin(form -> form.loginPage("/login").permitAll()) //
+                .formLogin(form -> form.loginPage("/login").permitAll())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/user/**").hasRole("USER")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/webjars/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .anyRequest().authenticated())
+                .rememberMe(Customizer.withDefaults())
                 .exceptionHandling(exp ->
                         exp.accessDeniedPage("/notAuthorized"));
         return httpSecurity.build();
