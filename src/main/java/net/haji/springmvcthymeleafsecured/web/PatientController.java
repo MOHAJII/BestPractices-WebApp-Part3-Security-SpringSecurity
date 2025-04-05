@@ -20,7 +20,7 @@ public class PatientController {
 
     @GetMapping("")
     public String index(Model model) {
-        return "redirect:/index";
+        return "redirect:/user/index";
     }
 
     @GetMapping("/user/index")
@@ -82,5 +82,10 @@ public class PatientController {
     @GetMapping("/notAuthorized")
     public String notAuthorized(Model model) {
         return "notAuthorized";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
     }
 }
