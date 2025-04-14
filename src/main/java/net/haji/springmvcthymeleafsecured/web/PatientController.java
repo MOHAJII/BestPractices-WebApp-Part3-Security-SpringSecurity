@@ -43,7 +43,7 @@ public class PatientController {
                          @RequestParam(name = "size", defaultValue = "4") int size,
                          @RequestParam(name = "keyword", defaultValue = "") String keyword) {
        patientRepository.deleteById(id);
-       return "redirect:/index?page="+page+"&size="+size+"&keyword="+keyword;
+       return "redirect:/user/index?page="+page+"&size="+size+"&keyword="+keyword;
     }
 
     @GetMapping("/admin/formPatient")
@@ -63,7 +63,7 @@ public class PatientController {
         }
         patientRepository.save(patient);
         System.out.println(patient);
-        return "redirect:/index?page="+page+"&keyword="+keyword;
+        return "redirect:/user/index?page="+page+"&keyword="+keyword;
     }
 
     @GetMapping("/admin/editPatient")
