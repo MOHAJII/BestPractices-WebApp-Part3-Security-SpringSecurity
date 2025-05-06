@@ -1,6 +1,9 @@
 # **BestPractices-WebApp-Security-SpringSecurity**  
 ![Application Screenshot](pictures/security-login.png)  
 
+![Application Screenshot](pictures/patientManagement.png)  
+
+
 ## **Introduction**  
 This repository extends the previous **Spring MVC & Thymeleaf** application by adding **Spring Security** for **authentication and authorization**. It ensures that only authorized users can access sensitive data and perform critical actions.  
 
